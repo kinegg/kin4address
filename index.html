@@ -16,6 +16,9 @@
             justify-content: center;
             width: 100%;
         }
+        #result {
+            display: none;
+        }
     </style>
 </head>
 
@@ -28,8 +31,10 @@
     <label for="kin3">Paste your KIN3 address here:</label><p>
     <input id="kin3" type="text" size=80 oninput="javascript:onChange()">
     <p>
-    <label for="kin4">KIN4 address (click to see token holdings):</label>
-    <div id="kin4">...</div>
+    <div id="result">
+        <label for="kin4">KIN4 address (click to see token holdings):</label>
+        <div id="kin4">...</div>
+    </div>
 
     <script lang="javascript">
 
@@ -64,11 +69,20 @@
         function toHex(s) { let r = ''; for (let i = 0; i < s.length; i++) { r += s.charCodeAt(i).toString(16); } return r; }
 
         function onChange() {
-            const kin3 = document.getElementById('kin3').value;
-            const decodedHex = base32tohex(kin3);
-            const hex = decodedHex.substr(2, decodedHex.length - 6);
-            const kin4 = bs58.encode(fromHexString(hex));
-            document.getElementById('kin4').innerHTML = `<a target="_blank" href="https://explorer.solana.com/address/${kin4}/tokens">${kin4}</a>`;
+            const result = document.getElementById('result');
+            try {
+                const kin4elem = document.getElementById('kin4');
+                const kin3 = document.getElementById('kin3').value;
+                const decodedHex = base32tohex(kin3);
+                const hex = decodedHex.substr(2, decodedHex.length - 6);
+                const kin4 = bs58.encode(fromHexString(hex));
+                kin4elem.innerHTML = `<a target="_blank" href="https://explorer.solana.com/address/${kin4}/tokens">${kin4}</a>`;
+                result.style.display = 'block';
+            }
+            catch (err) {
+                console.log(err)
+                result.style.display = 'none';
+            }
         }
 
         document.getElementById('kin3').focus()

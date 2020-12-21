@@ -72,7 +72,7 @@
             const result = document.getElementById('result');
             try {
                 const kin4elem = document.getElementById('kin4');
-                const kin3 = document.getElementById('kin3').value;
+                const kin3 = document.getElementById('kin3').value.trim();
                 const decodedHex = base32tohex(kin3);
                 const hex = decodedHex.substr(2, decodedHex.length - 6);
                 const kin4 = bs58.encode(fromHexString(hex));

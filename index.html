@@ -10,30 +10,95 @@
     <style>
         body {
             margin: 50px;
-            font-family: 'LMMono10';
+            font-family: 'Verdana';
             display: grid;
-            grid-template-rows: 5;
+            grid-template-columns: 1;
+            grid-template-rows: 6;
             justify-content: center;
             width: 100%;
+
+            animation-name: anim;
+            animation-duration: 3s;
         }
+
+        .kincolor {
+            color: #6F41E8;
+        }
+
+        input:focus {
+            border-color: #6F41E8;
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            text-align: center;
+            font-weight: bold;
+            margin: 10px;
+        }
+
+        .label {
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .help {
+            margin: 10px;
+            margin-top: 20px;
+            font-size: small;
+            text-align: center;
+            color: gray;
+        }
+
+        #kin4 {
+            text-align: center;
+        }
+
+        #logo {
+            grid-column: 1;
+            justify-self: center;
+        }
+
+        #logo>img {
+            width: 256px;
+        }
+
         #result {
             display: none;
+            justify-content: center;
+        }
+
+        #result>div {
+            justify-self: center;
+        }
+
+        @keyframes anim {
+            from {
+                background-color: #6F41E8;
+                transform: scale(0);
+            }
+
+            to {
+                background-color: white;
+                transform: scale(1.0);
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <div>
-        <img src="kin.png" width="256">
+    <div id="logo">
+        <img src="kin.png">
     </div>
+    <div class="kincolor subtitle">KIN3 to Solana address converter</div>
     <p></p>
-    <label for="kin3">Paste your KIN3 address here:</label><p>
+    <div class="label">Paste your KIN3 address here</div>
     <input id="kin3" type="text" size=80 oninput="javascript:onChange()">
     <p>
     <div id="result">
-        <label for="kin4">Solana address (click to see token holdings):</label>
+        <div class="label">Solana address</div>
         <div id="kin4">...</div>
+        <div class="help">Click to see token holdings</div>
     </div>
 
     <script lang="javascript">

@@ -11,13 +11,16 @@
         body {
             margin-top: 40px;
             font-family: 'Verdana';
-            display: grid;
-            grid-template-columns: 1;
-            grid-template-rows: 6;
-            justify-content: center;
-
             animation-name: anim;
             animation-duration: 3s;
+        }
+
+        .wrapper {
+            display: grid;
+            grid-template-columns: 1f;
+
+            justify-content: center;
+            width: 100%;
         }
 
         #kin3 {
@@ -91,18 +94,20 @@
 
 <body>
 
-    <div id="logo">
-        <img src="kin.png">
-    </div>
-    <div class="kincolor subtitle">KIN3 to Solana address converter</div>
-    <p></p>
-    <div class="label">Paste your KIN3 address here</div>
-    <input id="kin3" type="text" oninput="javascript:onChange()">
-    <p>
-    <div id="result">
-        <div class="label">Solana address</div>
-        <div id="kin4">...</div>
-        <div class="help">Click to see token holdings</div>
+    <div class="wrapper">
+        <div id="logo">
+            <img src="kin.png">
+        </div>
+        <div class="kincolor subtitle">KIN3 to Solana address converter</div>
+        <p></p>
+        <div class="label">Paste your KIN3 address here</div>
+        <input id="kin3" type="text" oninput="javascript:onChange()">
+        <p>
+        <div id="result">
+            <div class="label">Solana address</div>
+            <div id="kin4">...</div>
+            <div class="help">Click to see token holdings</div>
+        </div>
     </div>
 
     <script lang="javascript">

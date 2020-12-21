@@ -9,16 +9,20 @@
     <title>KIN3 to KIN4 address converter</title>
     <style>
         body {
-            margin: 50px;
+            margin-top: 40px;
             font-family: 'Verdana';
             display: grid;
             grid-template-columns: 1;
             grid-template-rows: 6;
             justify-content: center;
-            width: 100%;
 
             animation-name: anim;
             animation-duration: 3s;
+        }
+
+        #kin3 {
+            margin-left: 10px;
+            margin-right: 10px;
         }
 
         .kincolor {
@@ -93,7 +97,7 @@
     <div class="kincolor subtitle">KIN3 to Solana address converter</div>
     <p></p>
     <div class="label">Paste your KIN3 address here</div>
-    <input id="kin3" type="text" size=80 oninput="javascript:onChange()">
+    <input id="kin3" type="text" oninput="javascript:onChange()">
     <p>
     <div id="result">
         <div class="label">Solana address</div>
